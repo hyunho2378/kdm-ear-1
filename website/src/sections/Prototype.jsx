@@ -50,30 +50,30 @@ function ScreenPlaceholder({ screen }) {
   return (
     <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', background: isRest ? color.ink : color.white }}>
       {/* status bar placeholder */}
-      <div style={{ height: 44, background: isRest ? 'rgba(255,255,255,0.06)' : color.brandSky }} />
+      <div style={{ height: 44, background: isRest ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)' }} />
 
       {/* 중앙 대형 캐릭터 자리 */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 18, padding: 24 }}>
         <div
           style={{
             width: 150, height: 150, borderRadius: 100,
-            background: isRest ? color.brandStrong : color.brandPale,
-            border: `3px solid ${color.brand}`,
+            background: isRest ? color.ink : 'rgba(0,0,0,0.06)',
+            border: isRest ? '3px solid rgba(255,255,255,0.15)' : '3px solid rgba(0,0,0,0.12)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}
         >
           <span style={{ fontSize: 17, fontWeight: 800, color: isRest ? color.white : color.brand }}>{screen.title}</span>
         </div>
-        <div style={{ width: 130, height: 14, borderRadius: 7, background: isRest ? 'rgba(255,255,255,0.14)' : color.brandSky }} />
-        <div style={{ width: 90, height: 14, borderRadius: 7, background: isRest ? 'rgba(255,255,255,0.10)' : color.brandPale }} />
+        <div style={{ width: 130, height: 14, borderRadius: 7, background: isRest ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.07)' }} />
+        <div style={{ width: 90, height: 14, borderRadius: 7, background: isRest ? 'rgba(255,255,255,0.10)' : 'rgba(0,0,0,0.04)' }} />
       </div>
 
       {/* 3탭 하단 내비 placeholder */}
       <div style={{ height: 72, display: 'flex', borderTop: `1px solid ${isRest ? 'rgba(255,255,255,0.10)' : color.line}` }}>
         {[0, 1, 2].map((tab) => (
           <div key={tab} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-            <div style={{ width: 26, height: 26, borderRadius: 8, background: tab === 0 ? color.brand : (isRest ? 'rgba(255,255,255,0.16)' : color.brandSky) }} />
-            <div style={{ width: 28, height: 7, borderRadius: 4, background: isRest ? 'rgba(255,255,255,0.12)' : color.brandPale }} />
+            <div style={{ width: 26, height: 26, borderRadius: 8, background: tab === 0 ? color.ink : (isRest ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.07)') }} />
+            <div style={{ width: 28, height: 7, borderRadius: 4, background: isRest ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.04)' }} />
           </div>
         ))}
       </div>

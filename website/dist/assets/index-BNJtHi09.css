@@ -1,0 +1,1 @@
+*,*:before,*:after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;padding:0;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}

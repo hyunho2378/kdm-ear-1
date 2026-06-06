@@ -15,7 +15,7 @@ export default function Solution() {
         {[s.scope.uncontrollable, s.scope.controllable].map((b, i) => {
           const inScope = i === 1;
           return (
-            <div key={b.label} style={{ border: `1.5px solid ${inScope ? color.brand : color.line}`, background: inScope ? color.brandPale : color.white, borderRadius: 16, padding: '18px 20px' }}>
+            <div key={b.label} style={{ border: `1px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '18px 20px' }}>
               <p style={{ fontSize: 16, fontWeight: 800, color: inScope ? color.brand : color.inkFaint, margin: '0 0 8px', wordBreak: 'keep-all' }}>{b.label}</p>
               <p style={{ fontSize: 14, lineHeight: 1.6, color: color.inkMuted, margin: 0, wordBreak: 'keep-all' }}>{b.desc}</p>
             </div>
@@ -27,7 +27,7 @@ export default function Solution() {
       <h3 style={subHead}>핵심 경험 세 기둥</h3>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
         {s.pillars.map((p, i) => (
-          <div key={p.key} style={{ border: `1.5px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '22px 24px' }}>
+          <div key={p.key} style={{ border: `1px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '22px 24px' }}>
             <span style={{ fontSize: 13, fontWeight: 800, color: color.brand }}>{String(i + 1).padStart(2, '0')}</span>
             <p style={{ fontSize: 'clamp(20px,2vw,26px)', fontWeight: 800, color: color.ink, margin: '6px 0 10px', letterSpacing: '-0.02em' }}>{p.title}</p>
             <p style={{ fontSize: 14, lineHeight: 1.65, color: color.inkMuted, margin: 0, wordBreak: 'keep-all' }}>{p.desc}</p>
@@ -48,7 +48,7 @@ export default function Solution() {
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12, marginTop: 12 }}>
         {[c.shortTerm, c.longTerm].map((b) => (
-          <div key={b.label} style={{ border: `1.5px solid ${color.line}`, background: color.white, borderRadius: 14, padding: '16px 18px' }}>
+          <div key={b.label} style={{ border: `1px solid ${color.line}`, background: color.white, borderRadius: 14, padding: '16px 18px' }}>
             <p style={{ fontSize: 14, fontWeight: 800, color: color.brand, margin: '0 0 6px' }}>{b.label}</p>
             <p style={{ fontSize: 14, lineHeight: 1.6, color: color.inkMuted, margin: 0, wordBreak: 'keep-all' }}>{b.desc}</p>
           </div>

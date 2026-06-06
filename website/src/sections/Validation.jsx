@@ -26,7 +26,7 @@ export default function Validation() {
       </div>
 
       {/* 정직성 원칙 */}
-      <div style={{ marginTop: 20, borderLeft: `3px solid ${color.brand}`, background: color.brandPale, borderRadius: 8, padding: '18px 22px' }}>
+      <div style={{ marginTop: 20, border: `1px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '18px 22px' }}>
         <p style={{ fontSize: 13, fontWeight: 800, color: color.brand, margin: '0 0 6px' }}>정직성 원칙</p>
         <p style={{ fontSize: 15, lineHeight: 1.65, color: color.ink, margin: 0, wordBreak: 'keep-all' }}>{v.honesty}</p>
       </div>

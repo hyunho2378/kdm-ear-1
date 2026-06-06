@@ -15,7 +15,7 @@ export default function Hero() {
       style={{
         background: color.bg,
         fontFamily: font.family,
-        padding: `clamp(72px,9vw,140px) ${layout.gut} clamp(48px,6vw,88px)`,
+        padding: `clamp(72px,9vw,140px) ${layout.gut} ${layout.sectionY}`,
         scrollMarginTop: 64,
       }}
     >
@@ -111,7 +111,7 @@ function HeroStat({ label, value, unit, source }) {
   const [ref, animated] = useCountUp(Math.round(value * factor), 1400);
   const display = (animated / factor).toFixed(decimals);
   return (
-    <div style={{ borderTop: `2px solid ${color.brand}`, paddingTop: 14 }}>
+    <div style={{ borderTop: `1px solid ${color.line}`, paddingTop: 14 }}>
       <span ref={ref} style={{ fontSize: 'clamp(34px,4vw,52px)', fontWeight: 800, color: color.brand, letterSpacing: '-0.02em' }}>
         {display}
         <span style={{ fontSize: '0.5em' }}>{unit}</span>

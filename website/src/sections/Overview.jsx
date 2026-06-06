@@ -14,7 +14,8 @@ export default function Overview() {
         style={{
           marginTop: 32,
           padding: 'clamp(24px,3vw,40px)',
-          background: color.brandPale,
+          background: color.white,
+          border: `1px solid ${color.line}`,
           borderRadius: 20,
         }}
       >
@@ -59,7 +60,7 @@ export default function Overview() {
               key={s.label}
               style={{
                 position: 'relative',
-                border: `1.5px solid ${color.line}`,
+                border: `1px solid ${color.line}`,
                 borderRadius: 14,
                 padding: '16px 16px',
                 background: color.white,

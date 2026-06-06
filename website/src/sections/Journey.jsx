@@ -99,7 +99,7 @@ export default function Journey() {
           { k: 'Wants', items: j.needs.wants },
           { k: 'Direction', items: j.needs.direction },
         ].map((b) => (
-          <div key={b.k} style={{ border: `1.5px solid ${b.k === 'Direction' ? color.brand : color.line}`, background: b.k === 'Direction' ? color.brandPale : color.white, borderRadius: 16, padding: '18px 20px' }}>
+          <div key={b.k} style={{ border: `1px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '18px 20px' }}>
             <p style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.02em', color: color.brand, margin: '0 0 12px' }}>{b.k}</p>
             <ul style={{ margin: 0, paddingLeft: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
               {b.items.map((it, i) => (
@@ -111,7 +111,7 @@ export default function Journey() {
       </div>
 
       {/* 또래 인터뷰 계획 (검증 예정) */}
-      <div style={{ marginTop: 24, border: `1.5px dashed ${color.brand}`, borderRadius: 16, padding: '20px 22px', background: color.brandSky }}>
+      <div style={{ marginTop: 24, border: `1px solid ${color.line}`, borderRadius: 16, padding: '20px 22px', background: color.white }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
           <span style={{ fontSize: 16, fontWeight: 800, color: color.ink }}>{j.interviewPlan.title}</span>
           <span style={{ fontSize: 11, fontWeight: 800, color: color.white, background: color.brand, borderRadius: 100, padding: '3px 10px' }}>{j.interviewPlan.status}</span>
@@ -138,7 +138,7 @@ function Cell({ children, label, head, accent, top, last }) {
         alignItems: label || head ? 'center' : 'flex-start',
         textAlign: label || head ? 'center' : 'left',
         padding: head ? '12px 10px' : '12px 12px',
-        background: accent ? (head ? color.brand : color.brandPale) : label ? color.bg : color.white,
+        background: accent ? (head ? color.ink : 'rgba(0,0,0,0.04)') : label ? color.bg : color.white,
         borderTop: top ? `1px solid ${color.line}` : 'none',
         borderBottom: last ? 'none' : `1px solid ${color.line}`,
         borderRight: `1px solid ${color.line}`,

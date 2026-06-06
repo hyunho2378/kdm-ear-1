@@ -61,7 +61,7 @@ function Bar({ item, max }) {
       <div
         style={{
           height: 14,
-          background: color.brandSky,
+          background: 'rgba(0,0,0,0.04)',
           borderRadius: 7,
           overflow: 'hidden',
           border: pending ? `1.5px dashed ${color.line}` : 'none',

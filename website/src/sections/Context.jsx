@@ -23,8 +23,8 @@ export default function Context() {
             <div
               key={c.key}
               style={{
-                border: `1.5px solid ${inScope ? color.brand : color.line}`,
-                background: inScope ? color.brandPale : color.white,
+                border: `1px solid ${color.line}`,
+                background: color.white,
                 borderRadius: 16,
                 padding: '20px 22px',
               }}
@@ -58,9 +58,9 @@ export default function Context() {
         style={{
           marginTop: 24,
           padding: '20px 22px',
-          background: color.brandSky,
+          background: color.white,
           borderRadius: 16,
-          borderLeft: `3px solid ${color.brand}`,
+          border: `1px solid ${color.line}`,
         }}
       >
         <p style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.02em', color: color.brand, margin: '0 0 8px' }}>

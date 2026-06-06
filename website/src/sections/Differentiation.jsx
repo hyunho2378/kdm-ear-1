@@ -10,7 +10,7 @@ export default function Differentiation() {
       <SectionHeader eyebrow={d.eyebrow} title={d.title} lead={d.oneLine} />
 
       {/* 포지셔닝 비교 (CSS Grid, table 미사용) */}
-      <div style={{ marginTop: 32, border: `1.5px solid ${color.line}`, borderRadius: 16, overflow: 'hidden' }}>
+      <div style={{ marginTop: 32, border: `1px solid ${color.line}`, borderRadius: 16, overflow: 'hidden' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(96px,140px) 1fr 1fr' }}>
           <HeadCell>구분</HeadCell>
           <HeadCell>기존 서비스</HeadCell>
@@ -26,7 +26,7 @@ export default function Differentiation() {
       <h3 style={subHead}>대디전 수상작에서 빌린 것</h3>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
         {d.awardComparison.map((a) => (
-          <div key={a.name} style={{ border: `1.5px solid ${color.line}`, background: color.bg, borderRadius: 16, padding: '18px 20px' }}>
+          <div key={a.name} style={{ border: `1px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '18px 20px' }}>
             <p style={{ fontSize: 16, fontWeight: 800, color: color.ink, margin: '0 0 8px', wordBreak: 'keep-all' }}>{a.name}</p>
             <p style={{ fontSize: 14, lineHeight: 1.6, color: color.inkMuted, margin: 0, wordBreak: 'keep-all' }}>{a.borrowed}</p>
           </div>
@@ -51,14 +51,14 @@ function RowGroup({ row, last }) {
     <>
       <div style={{ ...cell, borderBottom: border, background: color.bg, fontWeight: 800, color: color.ink }}>{row.axis}</div>
       <div style={{ ...cell, borderBottom: border, color: color.inkMuted }}>{row.others}</div>
-      <div style={{ ...cell, borderBottom: border, background: color.brandPale, color: color.ink, fontWeight: 600 }}>{row.ours}</div>
+      <div style={{ ...cell, borderBottom: border, background: 'rgba(0,0,0,0.03)', color: color.ink, fontWeight: 600 }}>{row.ours}</div>
     </>
   );
 }
 
 function HeadCell({ children, accent }) {
   return (
-    <div style={{ ...cell, background: accent ? color.brand : color.brandSky, color: accent ? color.white : color.brand, fontWeight: 800, borderBottom: `1px solid ${color.line}` }}>
+    <div style={{ ...cell, background: accent ? color.ink : 'rgba(0,0,0,0.04)', color: accent ? color.white : color.inkMuted, fontWeight: 800, borderBottom: `1px solid ${color.line}` }}>
       {children}
     </div>
   );

@@ -2,7 +2,6 @@ import { color, type as t } from '../tokens/web.js';
 import Section from '../components/Section.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import DonutChart from '../components/DonutChart.jsx';
-import BarChart from '../components/BarChart.jsx';
 import data from '../data/ear.json';
 
 export default function DeskResearch() {
@@ -26,7 +25,7 @@ export default function DeskResearch() {
           <p style={{ ...cardBody, fontWeight: 700, color: color.ink }}>{m.tts.point}</p>
           <span style={src}>{m.tts.source}</span>
         </div>
-        <div style={{ ...card, background: color.brandPale, border: `1.5px solid ${color.brand}` }}>
+        <div style={card}>
           <p style={cardLabel}>{m.recoveryWindow.title}</p>
           <p style={{ fontSize: 'clamp(28px,3.4vw,44px)', fontWeight: 800, color: color.brand, letterSpacing: '-0.02em', margin: '4px 0 10px' }}>
             {m.recoveryWindow.value}
@@ -81,11 +80,6 @@ export default function DeskResearch() {
           </div>
         ))}
       </div>
-
-      <div style={{ marginTop: 16, maxWidth: 520 }}>
-        <BarChart items={[{ label: d.neglect.distribution.label, value: null, pending: true }]} />
-        <p style={{ ...src, marginTop: 8 }}>{d.neglect.distribution.note} · {d.neglect.source}</p>
-      </div>
     </Section>
   );
 }
@@ -105,7 +99,7 @@ const subHead = {
   margin: '40px 0 18px', letterSpacing: t.h3.ls, wordBreak: 'keep-all',
 };
 const card = {
-  border: `1.5px solid ${color.line}`, borderRadius: 16, padding: '20px 22px',
+  border: `1px solid ${color.line}`, borderRadius: 16, padding: '20px 22px',
   background: color.white, display: 'flex', flexDirection: 'column', gap: 8,
 };
 const cardLabel = { fontSize: 15, fontWeight: 800, color: color.ink, margin: 0, wordBreak: 'keep-all' };

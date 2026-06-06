@@ -20,8 +20,8 @@ export default function MarketGap() {
                 display: 'grid',
                 gridTemplateColumns: '64px 1fr',
                 alignItems: 'stretch',
-                border: empty ? `2px dashed ${color.brand}` : `1.5px solid ${color.line}`,
-                background: empty ? color.brandPale : color.white,
+                border: `1px solid ${color.line}`,
+                background: color.white,
                 borderRadius: 14,
                 overflow: 'hidden',
               }}
@@ -29,8 +29,8 @@ export default function MarketGap() {
               <div
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: empty ? color.brand : color.brandSky,
-                  color: empty ? color.white : color.brand,
+                  background: empty ? color.ink : 'rgba(0,0,0,0.06)',
+                  color: empty ? color.white : color.inkMuted,
                   fontSize: 20, fontWeight: 800,
                 }}
               >
@@ -40,7 +40,7 @@ export default function MarketGap() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
                   <span style={{ fontSize: 17, fontWeight: 800, color: color.ink, wordBreak: 'keep-all' }}>{l.name}</span>
                   {empty && (
-                    <span style={{ fontSize: 11, fontWeight: 800, color: color.white, background: color.brand, borderRadius: 100, padding: '3px 10px' }}>
+                    <span style={{ fontSize: 11, fontWeight: 800, color: color.white, background: color.ink, borderRadius: 100, padding: '3px 10px' }}>
                       이어쉼표가 설계할 빈칸
                     </span>
                   )}
@@ -59,10 +59,10 @@ export default function MarketGap() {
       </h3>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 12 }}>
         {g.bigTech.map((b) => (
-          <div key={b.name} style={{ border: `1.5px solid ${color.line}`, borderRadius: 16, padding: '18px 20px', background: color.white }}>
+          <div key={b.name} style={{ border: `1px solid ${color.line}`, borderRadius: 16, padding: '18px 20px', background: color.white }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <span style={{ fontSize: 17, fontWeight: 800, color: color.ink }}>{b.name}</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: color.brand, background: color.brandPale, borderRadius: 100, padding: '3px 10px', whiteSpace: 'nowrap' }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: color.inkMuted, background: 'rgba(0,0,0,0.06)', borderRadius: 100, padding: '3px 10px', whiteSpace: 'nowrap' }}>
                 {b.stopsAt}
               </span>
             </div>

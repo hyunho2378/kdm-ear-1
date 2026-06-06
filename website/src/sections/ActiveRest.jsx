@@ -16,14 +16,14 @@ export default function ActiveRest() {
           <p style={{ fontSize: 13, fontWeight: 800, color: color.inkFaint, margin: '0 0 8px' }}>자동 적립이라면</p>
           <p style={{ fontSize: 15, lineHeight: 1.65, color: color.inkMuted, margin: 0, wordBreak: 'keep-all' }}>{ard.problem}</p>
         </div>
-        <div style={{ border: `1.5px solid ${color.brand}`, background: color.brandPale, borderRadius: 16, padding: '20px 22px' }}>
+        <div style={{ border: `1px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '20px 22px' }}>
           <p style={{ fontSize: 13, fontWeight: 800, color: color.brand, margin: '0 0 8px' }}>능동적 쉼으로 비튼다</p>
           <p style={{ fontSize: 15, lineHeight: 1.65, color: color.ink, margin: 0, wordBreak: 'keep-all' }}>{ard.solution}</p>
         </div>
       </div>
 
       {/* 정보 앱 아니냐 방어 */}
-      <div style={{ marginTop: 16, borderLeft: `3px solid ${color.brand}`, background: color.brandSky, borderRadius: 8, padding: '18px 22px' }}>
+      <div style={{ marginTop: 16, border: `1px solid ${color.line}`, background: color.white, borderRadius: 16, padding: '18px 22px' }}>
         <p style={{ fontSize: 13, fontWeight: 800, color: color.brand, margin: '0 0 6px' }}>“정보·알림 앱 아니냐”에 대한 답</p>
         <p style={{ fontSize: 15, lineHeight: 1.65, color: color.ink, margin: 0, wordBreak: 'keep-all' }}>{ard.notificationFatigue}</p>
       </div>
@@ -32,8 +32,8 @@ export default function ActiveRest() {
       <h3 style={subHead}>{ar.title}</h3>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         {ar.steps.map((st, i) => (
-          <div key={st.no} style={{ display: 'grid', gridTemplateColumns: '40px 110px 1fr', alignItems: 'center', gap: 14, border: `1.5px solid ${color.line}`, background: color.white, borderRadius: 14, padding: '14px 18px' }}>
-            <span style={{ width: 32, height: 32, borderRadius: 100, background: i === 3 ? color.brand : color.brandSky, color: i === 3 ? color.white : color.brand, fontSize: 14, fontWeight: 800, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{st.no}</span>
+          <div key={st.no} style={{ display: 'grid', gridTemplateColumns: '40px 110px 1fr', alignItems: 'center', gap: 14, border: `1px solid ${color.line}`, background: color.white, borderRadius: 14, padding: '14px 18px' }}>
+            <span style={{ width: 32, height: 32, borderRadius: 100, background: i === 3 ? color.ink : 'rgba(0,0,0,0.06)', color: i === 3 ? color.white : color.inkMuted, fontSize: 14, fontWeight: 800, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{st.no}</span>
             <div>
               <p style={{ fontSize: 12, fontWeight: 700, color: color.inkFaint, margin: '0 0 2px' }}>{st.time}</p>
               <p style={{ fontSize: 15, fontWeight: 800, color: color.ink, margin: 0, wordBreak: 'keep-all' }}>{st.title}</p>
@@ -46,7 +46,7 @@ export default function ActiveRest() {
       {/* 범위와 한계 */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 12, marginTop: 24 }}>
         {ar.limits.map((l) => (
-          <div key={l.label} style={{ border: `1px dashed ${color.line}`, borderRadius: 14, padding: '16px 18px', background: color.bg }}>
+          <div key={l.label} style={{ border: `1px solid ${color.line}`, borderRadius: 14, padding: '16px 18px', background: color.white }}>
             <p style={{ fontSize: 13, fontWeight: 800, color: color.inkFaint, margin: '0 0 6px' }}>한계 · {l.label}</p>
             <p style={{ fontSize: 13.5, lineHeight: 1.6, color: color.inkMuted, margin: 0, wordBreak: 'keep-all' }}>{l.desc}</p>
           </div>

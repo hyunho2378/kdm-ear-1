@@ -6,8 +6,8 @@ export default function QuoteCard({ quote, source, pendingBadge }) {
   return (
     <div
       style={{
-        background: color.brandPale,
-        borderLeft: `3px solid ${color.brand}`,
+        background: color.white,
+        border: `1px solid ${color.line}`,
         borderRadius: 8,
         padding: '14px 18px',
         fontFamily: font.family,

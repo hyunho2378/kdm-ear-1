@@ -20,7 +20,7 @@ export default function Persona() {
         }}
       >
         {/* 좌: 인물 카드 */}
-        <div style={{ border: `1.5px solid ${color.brand}`, background: color.brandPale, borderRadius: 20, padding: '24px 26px' }}>
+        <div style={{ border: `1px solid ${color.line}`, background: color.white, borderRadius: 20, padding: '24px 26px' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 'clamp(24px,2.6vw,32px)', fontWeight: 800, color: color.ink, letterSpacing: '-0.02em' }}>{p.name}</span>
             <span style={{ fontSize: 13, color: color.inkFaint }}>{p.nameNote}</span>
@@ -47,7 +47,7 @@ export default function Persona() {
             <p style={{ fontSize: 13, fontWeight: 800, letterSpacing: '0.02em', color: color.brand, margin: '0 0 12px' }}>PAIN POINT</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {p.painPoints.map((pt, i) => (
-                <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', border: `1.5px solid ${color.line}`, background: color.white, borderRadius: 12, padding: '14px 16px' }}>
+                <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', border: `1px solid ${color.line}`, background: color.white, borderRadius: 12, padding: '14px 16px' }}>
                   <span style={{ flex: 'none', width: 22, height: 22, borderRadius: 100, background: color.brand, color: color.white, fontSize: 12, fontWeight: 800, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{i + 1}</span>
                   <p style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.5, color: color.ink, margin: 0, wordBreak: 'keep-all' }}>{pt}</p>
                 </div>
