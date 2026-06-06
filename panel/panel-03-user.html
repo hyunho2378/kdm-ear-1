@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>이어쉼표 패널 03 사용자</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --black:#000000;
+    --blue:#1F6FEB;
+    --t1:rgba(0,0,0,1);
+    --t2:rgba(0,0,0,0.62);
+    --t3:rgba(0,0,0,0.40);
+    --line:rgba(0,0,0,0.12);
+    --faint:rgba(0,0,0,0.04);
+    --blue-faint:rgba(31,111,235,0.10);
+    --blue-mid:rgba(31,111,235,0.45);
+    --margin:64px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:#d9d9d9;
+    font-family:'Pretendard',sans-serif;
+    display:flex;justify-content:center;align-items:flex-start;
+    padding:40px;
+  }
+  .panel{
+    width:1684px;height:1190px;
+    background:var(--white);
+    color:var(--t1);
+    padding:var(--margin);
+    position:relative;
+    display:flex;flex-direction:column;
+  }
+  .ph-head{display:flex;justify-content:space-between;align-items:baseline;height:34px;}
+  .ph-mark{font-size:20px;font-weight:800;letter-spacing:-0.01em;}
+  .ph-idx{font-size:13px;font-weight:600;letter-spacing:0.14em;color:var(--t3);}
+  .ph-rule{height:2px;background:var(--black);margin:14px 0 26px;}
+  .eb{font-size:13px;font-weight:700;letter-spacing:0.16em;color:var(--blue);text-transform:uppercase;}
+  .hl{font-size:22px;font-weight:800;letter-spacing:-0.01em;margin-top:6px;line-height:1.25;}
+  .sub{font-size:14px;font-weight:400;color:var(--t2);line-height:1.55;}
+  .card{border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;}
+
+  /* panel body */
+  .panel-body{
+    flex:1;
+    display:flex;flex-direction:column;
+    gap:18px;
+  }
+
+  /* --- PERSONA --- */
+  .persona-card{
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:18px 24px;
+    display:flex;flex-direction:row;
+    align-items:stretch;
+    gap:0;
+  }
+  .persona-id{
+    display:flex;flex-direction:column;
+    gap:5px;
+    min-width:220px;
+    padding-right:24px;
+  }
+  .persona-avatar{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--blue-faint);
+    border:2px solid rgba(31,111,235,0.30);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:6px;
+  }
+  .persona-name{font-size:22px;font-weight:800;letter-spacing:-0.02em;}
+  .persona-meta{font-size:13px;color:var(--t2);}
+  .persona-tag{
+    font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--blue);
+    border:1px dashed var(--blue-mid);border-radius:5px;
+    padding:2px 8px;display:inline-block;margin-top:3px;
+    width:fit-content;
+  }
+  .persona-desc{font-size:13px;color:var(--t3);margin-top:4px;}
+  .persona-divider{width:1px;background:var(--line);flex-shrink:0;margin:0 24px;}
+  .persona-pains{
+    flex:1;
+    display:flex;flex-direction:column;
+    justify-content:center;
+    gap:10px;
+  }
+  .pain-row{display:flex;align-items:flex-start;gap:10px;}
+  .pain-num{
+    font-size:11px;font-weight:800;color:var(--blue);
+    flex-shrink:0;margin-top:1px;width:18px;
+  }
+  .pain-text{font-size:13px;color:var(--t1);line-height:1.45;}
+
+  /* --- CJM (grid) --- */
+  .cjm-wrap{display:flex;flex-direction:column;gap:8px;}
+  .cjm-grid{
+    display:grid;
+    grid-template-columns:156px repeat(5,1fr);
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .cjm-grid .c{
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:10px 13px;
+    font-size:12px;line-height:1.45;color:var(--t1);
+    word-break:keep-all;overflow-wrap:break-word;
+    background:var(--faint);
+  }
+  .cjm-grid .lc{
+    background:var(--faint);
+    font-size:12px;font-weight:700;color:var(--blue);
+    display:flex;align-items:center;
+    border-right:2px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:10px 13px;
+  }
+  .cjm-grid .stage{
+    background:var(--blue);color:var(--white);
+    text-align:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:52px;
+    border-right:1px solid rgba(255,255,255,0.25);
+    border-bottom:1px solid var(--line);
+  }
+  .cjm-grid .stage .stage-num{font-size:11px;font-weight:700;opacity:0.8;}
+  .cjm-grid .stage .stage-name{font-size:13px;font-weight:800;}
+  .cjm-grid .lc.stage-lc{background:var(--faint);color:var(--blue);justify-content:flex-start;}
+  .cjm-grid .feeling-cell{
+    grid-column:2 / 7;
+    padding:0;min-height:188px;
+    background:var(--faint);
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .cjm-grid .lc.feeling-lc{min-height:188px;}
+  .cjm-grid .opp{color:var(--blue);font-weight:600;}
+  .cjm-grid .opp.opp5{background:var(--blue-faint);font-weight:700;}
+
+  /* --- INSIGHT --- */
+  .insight-cards{
+    flex:1;
+    display:flex;flex-direction:row;
+    gap:18px;
+  }
+  .insight-card{
+    flex:1;
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:18px 20px;
+    display:flex;flex-direction:column;
+    gap:6px;
+  }
+  .insight-card.featured{
+    border-color:var(--blue);
+    background:var(--blue-faint);
+  }
+  .insight-tag{
+    font-size:11px;font-weight:700;letter-spacing:0.1em;
+    color:var(--blue);text-transform:uppercase;
+  }
+  .insight-head{font-size:16px;font-weight:800;letter-spacing:-0.01em;margin-top:2px;line-height:1.3;}
+  .insight-body{font-size:13px;color:var(--t2);line-height:1.6;margin-top:4px;}
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="ph-head">
+    <span class="ph-mark">이어쉼표</span>
+    <span class="ph-idx">03 USER</span>
+  </div>
+  <div class="ph-rule"></div>
+
+  <div class="panel-body">
+
+    <!-- PERSONA -->
+    <div>
+      <div class="eb">Persona</div>
+      <div style="margin-top:8px;">
+        <div class="persona-card">
+          <div class="persona-id">
+            <div class="persona-avatar">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="11" cy="7.5" r="3.5" fill="#1F6FEB" opacity="0.65"/>
+                <path d="M3.5 19c0-4.142 3.358-7.5 7.5-7.5s7.5 3.358 7.5 7.5" stroke="#1F6FEB" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.65"/>
+              </svg>
+            </div>
+            <div class="persona-name">김도현</div>
+            <div class="persona-meta">23세 · 대학생</div>
+            <div class="persona-tag">이어폰 의존형</div>
+            <div class="persona-desc">알지만 못 멈추는</div>
+          </div>
+          <div class="persona-divider"></div>
+          <div class="persona-pains">
+            <div class="pain-row">
+              <div class="pain-num">01</div>
+              <div class="pain-text">손상이 눈에 보이지 않아 자각 자체가 없다</div>
+            </div>
+            <div class="pain-row">
+              <div class="pain-num">02</div>
+              <div class="pain-text">경고를 알지만 멈출 이유를 직접 느끼지 못한다</div>
+            </div>
+            <div class="pain-row">
+              <div class="pain-num">03</div>
+              <div class="pain-text">피로 신호가 와도 그때뿐, 행동으로 잇지 못한다</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CJM -->
+    <div class="cjm-wrap">
+      <div class="eb">Customer Journey Map — 인지부터 회복까지 청력 여정</div>
+            <div class="cjm-grid">
+
+        <!-- stage row -->
+        <div class="lc stage-lc">Stage</div>
+        <div class="stage"><span class="stage-num">01</span><span class="stage-name">인지</span></div>
+        <div class="stage"><span class="stage-num">02</span><span class="stage-name">일상 청취</span></div>
+        <div class="stage"><span class="stage-num">03</span><span class="stage-name">신호</span></div>
+        <div class="stage"><span class="stage-num">04</span><span class="stage-name">방치</span></div>
+        <div class="stage"><span class="stage-num">05</span><span class="stage-name">이어쉼표 회복</span></div>
+
+        <!-- action row -->
+        <div class="lc">액션<br>Action</div>
+        <div class="c">아침에 이어폰을 끼고 하루를 시작한다</div>
+        <div class="c">등하교와 공부 내내 이어폰을 빼지 않는다</div>
+        <div class="c">이어폰을 빼니 귀가 먹먹하고 삐 소리가 난다</div>
+        <div class="c">잠깐 걱정하다 잊고 다음 날 또 종일 낀다</div>
+        <div class="c">캐릭터가 쉼을 청하면 이어폰을 빼 쉼을 준다</div>
+
+        <!-- feeling row -->
+        <div class="lc feeling-lc">감정<br>Feeling</div>
+        <div class="feeling-cell">
+          <svg viewBox="0 0 1400 188" width="100%" height="188" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard, sans-serif">
+            <line x1="0" y1="52" x2="1400" y2="52" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+            <line x1="0" y1="132" x2="1400" y2="132" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+            <text x="10" y="44" font-size="10" fill="rgba(0,0,0,0.30)">Good</text>
+            <text x="10" y="148" font-size="10" fill="rgba(0,0,0,0.30)">Bad</text>
+            <polyline points="140,55 420,72 700,118 980,150 1260,38" fill="none" stroke="#1F6FEB" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="140" cy="55" r="5.5" fill="#FFFFFF" stroke="#1F6FEB" stroke-width="2.5"/>
+            <circle cx="420" cy="72" r="5.5" fill="#FFFFFF" stroke="#1F6FEB" stroke-width="2.5"/>
+            <circle cx="700" cy="118" r="5.5" fill="#FFFFFF" stroke="#1F6FEB" stroke-width="2.5"/>
+            <circle cx="980" cy="150" r="6.5" fill="#1F6FEB" stroke="#1F6FEB" stroke-width="2.5"/>
+            <circle cx="1260" cy="38" r="6.5" fill="#1F6FEB" stroke="#1F6FEB" stroke-width="2.5"/>
+            <text x="140" y="74" font-size="10" fill="rgba(0,0,0,0.50)" text-anchor="middle">다들 이러고 산다</text>
+            <text x="420" y="91" font-size="10" fill="rgba(0,0,0,0.50)" text-anchor="middle">이어폰 없으면 허전하다</text>
+            <text x="700" y="104" font-size="10" fill="rgba(0,0,0,0.50)" text-anchor="middle">또 삐 소리 난다</text>
+            <text x="980" y="120" font-size="10" fill="rgba(0,0,0,0.50)" text-anchor="middle">아직 괜찮다</text>
+            <text x="1260" y="24" font-size="10" fill="#1F6FEB" text-anchor="middle">쉬게 하니 한결 낫다</text>
+            <text x="140" y="175" font-size="11" fill="rgba(0,0,0,0.60)" text-anchor="middle">무자각</text>
+            <text x="420" y="175" font-size="11" fill="rgba(0,0,0,0.60)" text-anchor="middle">익숙함</text>
+            <text x="700" y="175" font-size="11" fill="rgba(0,0,0,0.60)" text-anchor="middle">잠깐 불안</text>
+            <text x="980" y="175" font-size="11.5" fill="rgba(0,0,0,0.88)" text-anchor="middle" font-weight="700">체념 · 최저점</text>
+            <text x="1260" y="175" font-size="11.5" fill="#1F6FEB" text-anchor="middle" font-weight="700">회복 · 안심</text>
+          </svg>
+        </div>
+
+        <!-- pain row -->
+        <div class="lc">Pain<br>Point</div>
+        <div class="c">손상이 보이지 않아 자각이 없다</div>
+        <div class="c">시끄러워 볼륨을 오히려 키운다</div>
+        <div class="c">신호를 느껴도 그때뿐이다</div>
+        <div class="c">회복 전에 다음 노출을 덮어쓴다</div>
+        <div class="c">강제가 아니면 쉽게 미룬다</div>
+
+        <!-- opportunity row -->
+        <div class="lc">기회<br>Opportunity</div>
+        <div class="c opp">캐릭터로 내 귀 상태를 보여준다</div>
+        <div class="c opp">청취 부담을 조용히 측정한다</div>
+        <div class="c opp">신호를 회복 행동으로 잇는다</div>
+        <div class="c opp">경고가 아니라 부탁으로 청한다</div>
+        <div class="c opp opp5">지켜낸 청력을 쌓아 보여준다</div>
+
+      </div>
+    </div>
+
+    <!-- INSIGHT -->
+    <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+      <div class="eb">Insight</div>
+      <div class="insight-cards">
+
+        <div class="insight-card featured">
+          <div class="insight-tag">Key Insight</div>
+          <div class="insight-head">경고가 아니라<br>회복이어야 한다</div>
+          <div class="insight-body">경고 문구는 회피 반응을 유발한다. 쉼의 결과를 회복 행동으로 직접 연결해야 행동 변화가 일어난다.</div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-tag">Visibility</div>
+          <div class="insight-head">보이지 않는 것을<br>보이게 만든다</div>
+          <div class="insight-body">청력 손상은 눈에 보이지 않는다. 캐릭터가 귀 상태를 대리해 체감시켜야 자각이 생긴다.</div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-tag">Autonomy</div>
+          <div class="insight-head">강제 아닌<br>부탁으로 청한다</div>
+          <div class="insight-body">쉬라는 명령은 무시된다. 캐릭터가 쉼을 부탁하고 거절권을 주면 심리적 저항이 낮아진다.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

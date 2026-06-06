@@ -1,0 +1,107 @@
+<svg viewBox="0 0 1536 720" xmlns="http://www.w3.org/2000/svg" font-family="Pretendard, 'Noto Sans KR', sans-serif">
+  <rect x="0" y="0" width="1536" height="720" fill="#ffffff"/>
+
+  <text x="40" y="46" font-size="24" font-weight="700" fill="#1F6FEB">Customer Journey Map</text>
+  <text x="40" y="72" font-size="14" fill="#000000" opacity="0.55">이어폰 의존형 김도현, 23세. 인지부터 회복까지 청력 여정</text>
+
+  <g transform="translate(40,100)">
+
+    <rect x="0" y="0" width="251" height="55" rx="6" fill="#EEF2FF"/>
+    <rect x="0" y="63" width="251" height="100" rx="6" fill="#EEF2FF"/>
+    <rect x="0" y="171" width="251" height="220" rx="6" fill="#EEF2FF"/>
+    <rect x="0" y="399" width="251" height="90" rx="6" fill="#EEF2FF"/>
+    <rect x="0" y="497" width="251" height="80" rx="6" fill="#EEF2FF"/>
+
+    <text x="20" y="33" font-size="15" font-weight="700" fill="#1D4ED8">Stage</text>
+    <text x="20" y="118" font-size="14" font-weight="700" fill="#1D4ED8">액션 Action</text>
+    <text x="20" y="285" font-size="14" font-weight="700" fill="#1D4ED8">감정 Feeling</text>
+    <text x="20" y="448" font-size="14" font-weight="700" fill="#1D4ED8">Pain Point</text>
+    <text x="20" y="541" font-size="14" font-weight="700" fill="#1D4ED8">기회 Opportunity</text>
+
+    <rect x="260" y="0" width="244" height="55" rx="6" fill="#1F6FEB"/>
+    <rect x="517" y="0" width="243" height="55" rx="6" fill="#1F6FEB"/>
+    <rect x="774" y="0" width="244" height="55" rx="6" fill="#1F6FEB"/>
+    <rect x="1031" y="0" width="243" height="55" rx="6" fill="#1F6FEB"/>
+    <rect x="1287" y="0" width="249" height="55" rx="6" fill="#1F6FEB"/>
+    <text x="278" y="25" font-size="13" font-weight="700" fill="#ffffff">01</text>
+    <text x="278" y="44" font-size="14" font-weight="700" fill="#ffffff">인지</text>
+    <text x="535" y="25" font-size="13" font-weight="700" fill="#ffffff">02</text>
+    <text x="535" y="44" font-size="14" font-weight="700" fill="#ffffff">일상 청취</text>
+    <text x="792" y="25" font-size="13" font-weight="700" fill="#ffffff">03</text>
+    <text x="792" y="44" font-size="14" font-weight="700" fill="#ffffff">신호</text>
+    <text x="1049" y="25" font-size="13" font-weight="700" fill="#ffffff">04</text>
+    <text x="1049" y="44" font-size="14" font-weight="700" fill="#ffffff">방치</text>
+    <text x="1305" y="25" font-size="13" font-weight="700" fill="#ffffff">05</text>
+    <text x="1305" y="44" font-size="14" font-weight="700" fill="#ffffff">이어쉼표 회복</text>
+
+    <rect x="260" y="63" width="244" height="100" rx="6" fill="#F8FAFF"/>
+    <rect x="517" y="63" width="243" height="100" rx="6" fill="#F8FAFF"/>
+    <rect x="774" y="63" width="244" height="100" rx="6" fill="#F8FAFF"/>
+    <rect x="1031" y="63" width="243" height="100" rx="6" fill="#F8FAFF"/>
+    <rect x="1287" y="63" width="249" height="100" rx="6" fill="#F8FAFF"/>
+    <text x="278" y="100" font-size="13" fill="#000000"><tspan x="278" dy="0">아침에 이어폰을 끼고</tspan><tspan x="278" dy="19">하루를 시작한다</tspan></text>
+    <text x="535" y="100" font-size="13" fill="#000000"><tspan x="535" dy="0">등하교와 공부 내내</tspan><tspan x="535" dy="19">이어폰을 빼지 않는다</tspan></text>
+    <text x="792" y="100" font-size="13" fill="#000000"><tspan x="792" dy="0">이어폰을 빼니 귀가</tspan><tspan x="792" dy="19">먹먹하고 삐 소리가 난다</tspan></text>
+    <text x="1049" y="100" font-size="13" fill="#000000"><tspan x="1049" dy="0">잠깐 걱정하다 잊고</tspan><tspan x="1049" dy="19">다음 날 또 종일 낀다</tspan></text>
+    <text x="1305" y="100" font-size="13" fill="#000000"><tspan x="1305" dy="0">캐릭터가 쉼을 청하면</tspan><tspan x="1305" dy="19">이어폰을 빼 쉼을 준다</tspan></text>
+
+    <g transform="translate(0,171)">
+      <rect x="260" y="0" width="244" height="220" rx="6" fill="#F8FAFF"/>
+      <rect x="517" y="0" width="243" height="220" rx="6" fill="#F8FAFF"/>
+      <rect x="774" y="0" width="244" height="220" rx="6" fill="#F8FAFF"/>
+      <rect x="1031" y="0" width="243" height="220" rx="6" fill="#F8FAFF"/>
+      <rect x="1287" y="0" width="249" height="220" rx="6" fill="#F8FAFF"/>
+
+      <line x1="260" y1="60" x2="1536" y2="60" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+      <line x1="260" y1="160" x2="1536" y2="160" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+      <text x="270" y="52" font-size="11" fill="#000000" opacity="0.35">Good</text>
+      <text x="270" y="172" font-size="11" fill="#000000" opacity="0.35">Bad</text>
+
+      <polyline points="382,70 638,90 896,150 1153,175 1409,55" fill="none" stroke="#1F6FEB" stroke-width="2.5"/>
+      <circle cx="382" cy="70" r="6" fill="#ffffff" stroke="#1F6FEB" stroke-width="2.5"/>
+      <circle cx="638" cy="90" r="6" fill="#ffffff" stroke="#1F6FEB" stroke-width="2.5"/>
+      <circle cx="896" cy="150" r="6" fill="#ffffff" stroke="#1F6FEB" stroke-width="2.5"/>
+      <circle cx="1153" cy="175" r="7" fill="#1F6FEB" stroke="#1F6FEB" stroke-width="2.5"/>
+      <circle cx="1409" cy="55" r="6" fill="#1F6FEB" stroke="#1F6FEB" stroke-width="2.5"/>
+
+      <text x="382" y="205" font-size="12" fill="#000000" text-anchor="middle" opacity="0.7">무자각</text>
+      <text x="638" y="205" font-size="12" fill="#000000" text-anchor="middle" opacity="0.7">익숙함</text>
+      <text x="896" y="205" font-size="12" fill="#000000" text-anchor="middle" opacity="0.7">잠깐 불안</text>
+      <text x="1153" y="205" font-size="12" fill="#000000" text-anchor="middle" font-weight="700">체념, 최저점</text>
+      <text x="1409" y="205" font-size="12" fill="#1F6FEB" text-anchor="middle" font-weight="700">회복, 안심</text>
+
+      <text x="382" y="100" font-size="11" fill="#000000" text-anchor="middle" opacity="0.55"><tspan x="382" dy="0">다들 이러고</tspan><tspan x="382" dy="15">산다</tspan></text>
+      <text x="638" y="120" font-size="11" fill="#000000" text-anchor="middle" opacity="0.55"><tspan x="638" dy="0">이어폰 없으면</tspan><tspan x="638" dy="15">허전하다</tspan></text>
+      <text x="896" y="180" font-size="11" fill="#000000" text-anchor="middle" opacity="0.55"><tspan x="896" dy="0">또 삐 소리</tspan><tspan x="896" dy="15">난다</tspan></text>
+      <text x="1153" y="120" font-size="11" fill="#000000" text-anchor="middle" opacity="0.55"><tspan x="1153" dy="0">아직 괜찮다</tspan></text>
+      <text x="1409" y="105" font-size="11" fill="#1F6FEB" text-anchor="middle"><tspan x="1409" dy="0">쉬게 하니</tspan><tspan x="1409" dy="15">한결 낫다</tspan></text>
+    </g>
+
+    <g transform="translate(0,399)">
+      <rect x="260" y="0" width="244" height="90" rx="6" fill="#F8FAFF"/>
+      <rect x="517" y="0" width="243" height="90" rx="6" fill="#F8FAFF"/>
+      <rect x="774" y="0" width="244" height="90" rx="6" fill="#F8FAFF"/>
+      <rect x="1031" y="0" width="243" height="90" rx="6" fill="#F8FAFF"/>
+      <rect x="1287" y="0" width="249" height="90" rx="6" fill="#F8FAFF"/>
+      <text x="278" y="38" font-size="12" fill="#000000"><tspan x="278" dy="0">손상이 보이지</tspan><tspan x="278" dy="17">않아 자각이 없다</tspan></text>
+      <text x="535" y="38" font-size="12" fill="#000000"><tspan x="535" dy="0">시끄러워 볼륨을</tspan><tspan x="535" dy="17">오히려 키운다</tspan></text>
+      <text x="792" y="38" font-size="12" fill="#000000"><tspan x="792" dy="0">신호를 느껴도</tspan><tspan x="792" dy="17">그때뿐이다</tspan></text>
+      <text x="1049" y="38" font-size="12" fill="#000000"><tspan x="1049" dy="0">회복 전에 다음</tspan><tspan x="1049" dy="17">노출을 덮어쓴다</tspan></text>
+      <text x="1305" y="38" font-size="12" fill="#000000"><tspan x="1305" dy="0">강제가 아니면</tspan><tspan x="1305" dy="17">쉽게 미룬다</tspan></text>
+    </g>
+
+    <g transform="translate(0,497)">
+      <rect x="260" y="0" width="244" height="80" rx="6" fill="#F8FAFF"/>
+      <rect x="517" y="0" width="243" height="80" rx="6" fill="#F8FAFF"/>
+      <rect x="774" y="0" width="244" height="80" rx="6" fill="#F8FAFF"/>
+      <rect x="1031" y="0" width="243" height="80" rx="6" fill="#F8FAFF"/>
+      <rect x="1287" y="0" width="249" height="80" rx="6" fill="#E6F1FB"/>
+      <text x="278" y="34" font-size="12" fill="#1F6FEB"><tspan x="278" dy="0">캐릭터로 내 귀</tspan><tspan x="278" dy="17">상태를 보여준다</tspan></text>
+      <text x="535" y="34" font-size="12" fill="#1F6FEB"><tspan x="535" dy="0">청취 부담을</tspan><tspan x="535" dy="17">조용히 측정한다</tspan></text>
+      <text x="792" y="34" font-size="12" fill="#1F6FEB"><tspan x="792" dy="0">신호를 회복</tspan><tspan x="792" dy="17">행동으로 잇는다</tspan></text>
+      <text x="1049" y="34" font-size="12" fill="#1F6FEB"><tspan x="1049" dy="0">경고가 아니라</tspan><tspan x="1049" dy="17">부탁으로 청한다</tspan></text>
+      <text x="1305" y="34" font-size="12" fill="#1F6FEB" font-weight="700"><tspan x="1305" dy="0">지켜낸 청력을</tspan><tspan x="1305" dy="17">쌓아 보여준다</tspan></text>
+    </g>
+
+  </g>
+</svg>

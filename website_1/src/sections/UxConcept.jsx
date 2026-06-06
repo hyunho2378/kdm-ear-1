@@ -1,0 +1,90 @@
+import { color, font, type as t } from '../tokens/web.js';
+import { useReveal } from '../lib/useReveal.js';
+import gangneungPhoto from '../assets/photo/gangneung.jpeg';
+
+export default function UxConcept() {
+  const [ref, visible] = useReveal({ threshold: 0.15 });
+
+  return (
+    <section
+      id="concept"
+      style={{
+        position: 'relative',
+        width: '100%',
+        overflow: 'hidden',
+        minHeight: 'clamp(480px,60vh,800px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundImage: `url(${gangneungPhoto})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: color.ink,
+      }}
+    >
+      {/* Overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: color.photoOverlay,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Content */}
+      <div
+        ref={ref}
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          textAlign: 'center',
+          padding: 'clamp(40px,6vw,80px) clamp(20px,5vw,80px)',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'none' : 'translateY(32px)',
+          transition: 'opacity 0.9s ease-out, transform 0.9s ease-out',
+        }}
+      >
+        {/* Eyebrow */}
+        <p style={{
+          fontSize: t.eyebrow.size, fontWeight: t.eyebrow.weight,
+          letterSpacing: t.eyebrow.ls, textTransform: t.eyebrow.transform,
+          color: color.whiteA60,
+          margin: '0 0 clamp(20px,3vw,36px)',
+          fontFamily: font.family,
+        }}>
+          UX CONCEPT
+        </p>
+
+        {/* Main headline */}
+        <h2 style={{
+          fontSize: 'clamp(48px,8vw,120px)',
+          fontWeight: 800,
+          lineHeight: 1.22,
+          letterSpacing: '-0.04em',
+          color: color.white,
+          margin: '0 0 clamp(20px,2.5vw,32px)',
+          fontFamily: font.family,
+          wordBreak: 'keep-all',
+        }}>
+          내 돈이 내 편인 앱
+        </h2>
+
+        {/* Statement */}
+        <p style={{
+          fontSize: 'clamp(16px,1.6vw,22px)',
+          fontWeight: 500,
+          lineHeight: 1.75,
+          color: color.whiteA60,
+          margin: 0,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          fontFamily: font.family,
+        }}>
+          잔액이 앱 밖에서도 보이고, 환불이 충전 옆에 있습니다.
+        </p>
+      </div>
+    </section>
+  );
+}

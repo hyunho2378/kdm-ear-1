@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>이어쉼표 패널 04 솔루션</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --white:#FFFFFF;--black:#000000;--blue:#1F6FEB;
+    --t1:rgba(0,0,0,1);--t2:rgba(0,0,0,0.62);--t3:rgba(0,0,0,0.40);
+    --line:rgba(0,0,0,0.12);--faint:rgba(0,0,0,0.04);
+    --blue-faint:rgba(31,111,235,0.10);--blue-mid:rgba(31,111,235,0.45);
+    --margin:64px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#d9d9d9;font-family:'Pretendard',sans-serif;display:flex;justify-content:center;align-items:flex-start;padding:40px;}
+  .panel{width:1684px;height:1190px;background:var(--white);color:var(--t1);padding:var(--margin);position:relative;display:flex;flex-direction:column;}
+  .ph-head{display:flex;justify-content:space-between;align-items:baseline;height:34px;}
+  .ph-mark{font-size:20px;font-weight:800;letter-spacing:-0.01em;}
+  .ph-idx{font-size:13px;font-weight:600;letter-spacing:0.14em;color:var(--t3);}
+  .ph-rule{height:2px;background:var(--black);margin:14px 0 26px;}
+  .eb{font-size:13px;font-weight:700;letter-spacing:0.16em;color:var(--blue);text-transform:uppercase;}
+
+  .panel-body{flex:1;display:flex;flex-direction:column;gap:18px;}
+
+  /* pillars */
+  .pillars-row{display:flex;gap:18px;margin-top:8px;}
+  .pillar{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;display:flex;flex-direction:column;gap:3px;}
+  .p-num{font-size:11px;font-weight:700;letter-spacing:0.10em;color:var(--blue);}
+  .p-head{font-size:15px;font-weight:800;letter-spacing:-0.01em;line-height:1.3;margin-top:2px;}
+  .p-body{font-size:12px;color:var(--t2);line-height:1.5;margin-top:3px;}
+
+  /* mockup section */
+  .sec-mockups{flex:1;display:flex;flex-direction:column;}
+  .mockup-row{flex:1;display:flex;gap:18px;}
+  .mockup-wrap{flex:1;display:flex;flex-direction:column;gap:10px;}
+  .mockup-frame{flex:1;border-radius:22px;border:1.5px solid var(--line);overflow:hidden;display:flex;flex-direction:column;background:var(--white);}
+  .mockup-frame.dark{background:#000000;border-color:rgba(255,255,255,0.14);}
+  .m-status{height:18px;background:var(--faint);flex-shrink:0;}
+  .m-status.dark{background:rgba(255,255,255,0.04);}
+  .m-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 14px;gap:8px;}
+  .m-tabbar{height:38px;border-top:1.5px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:space-around;padding:0 20px;}
+  .m-tabbar.dark{border-top-color:rgba(255,255,255,0.10);background:#000000;}
+  .m-tab{width:20px;height:3.5px;border-radius:2px;background:var(--faint);}
+  .m-tab.dk{background:rgba(255,255,255,0.14);}
+  .m-tab.active{background:var(--blue);}
+  .m-tab.active-dk{background:rgba(31,111,235,0.65);}
+
+  /* character */
+  .char-wrap{position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .char{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;flex-shrink:0;}
+  .c-eyes{display:flex;gap:10px;}
+  .c-eye{width:6px;height:6px;border-radius:50%;}
+  .ring{position:absolute;border-radius:50%;border:1.5px dashed;top:0;right:0;bottom:0;left:0;margin:auto;}
+
+  /* text + ui elements */
+  .m-badge{font-size:9px;font-weight:700;letter-spacing:0.08em;color:var(--blue);border:1px solid rgba(31,111,235,0.35);border-radius:5px;padding:2px 8px;}
+  .m-h{font-size:11.5px;font-weight:800;text-align:center;line-height:1.45;color:var(--t1);}
+  .m-h.w{color:rgba(255,255,255,0.88);}
+  .m-s{font-size:9.5px;text-align:center;color:var(--t2);line-height:1.4;}
+  .m-s.w{color:rgba(255,255,255,0.44);}
+  .m-cta{width:100%;height:36px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#FFFFFF;}
+  .m-ghost{width:100%;height:28px;border-radius:8px;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:600;color:var(--t2);}
+  .m-ghost.w{border-color:rgba(255,255,255,0.22);color:rgba(255,255,255,0.48);}
+  .m-stamps{display:flex;gap:7px;}
+  .m-stamp{width:22px;height:22px;border-radius:50%;background:var(--blue);opacity:0.82;}
+  .mockup-label{font-size:10.5px;font-weight:600;letter-spacing:0.04em;color:var(--t3);text-align:center;}
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="ph-head">
+    <span class="ph-mark">이어쉼표</span>
+    <span class="ph-idx">04 SOLUTION</span>
+  </div>
+  <div class="ph-rule"></div>
+
+  <div class="panel-body">
+
+    <!-- THREE PILLARS -->
+    <div>
+      <div class="eb">Three Pillars</div>
+      <div class="pillars-row">
+        <div class="pillar">
+          <div class="p-num">01 · 보이게</div>
+          <div class="p-head">보이지 않던 것을<br>보이게 만든다</div>
+          <div class="p-body">캐릭터가 청력 상태를 대리해 체감시킨다. 경고 문구 대신 직관적 자각.</div>
+        </div>
+        <div class="pillar">
+          <div class="p-num">02 · 쉬게</div>
+          <div class="p-head">명령 아닌 부탁으로<br>쉬게 한다</div>
+          <div class="p-body">캐릭터가 쉼을 청한다. 거절권을 주면서 심리적 저항을 낮춘다.</div>
+        </div>
+        <div class="pillar">
+          <div class="p-num">03 · 쌓이게</div>
+          <div class="p-head">쉰 날이 기록으로<br>자라 쌓인다</div>
+          <div class="p-body">지켜낸 청력이 수치와 캐릭터 성장으로 누적되어 행동을 강화한다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 MOCKUPS: 하루 사이클 -->
+    <div class="sec-mockups">
+      <div class="mockup-row">
+
+        <!-- 01 홈 Fresh -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div class="char-wrap">
+                <div class="char" style="width:88px;height:88px;background:var(--blue-faint);border:2.5px solid rgba(31,111,235,0.35);">
+                  <div class="c-eyes">
+                    <div class="c-eye" style="background:var(--blue);"></div>
+                    <div class="c-eye" style="background:var(--blue);"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-h">오늘 컨디션 좋아요</div>
+              <div class="m-s">지켜낸 청력 12일째</div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">홈 · Fresh</div>
+        </div>
+
+        <!-- 02 홈 Tiring -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div class="m-badge">이어폰 듣는 중</div>
+              <div class="char-wrap">
+                <div class="char" style="width:88px;height:88px;background:rgba(31,111,235,0.04);border:2px solid rgba(31,111,235,0.18);">
+                  <div class="c-eyes">
+                    <div class="c-eye" style="background:rgba(31,111,235,0.40);border-radius:1px;height:3px;width:7px;"></div>
+                    <div class="c-eye" style="background:rgba(31,111,235,0.40);border-radius:1px;height:3px;width:7px;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-s">연속 청취 52분</div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">홈 · Tiring</div>
+        </div>
+
+        <!-- 03 임계점 — 이명 호 + 부탁 -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div class="char-wrap" style="width:138px;height:138px;">
+                <div class="ring" style="width:138px;height:138px;border-color:rgba(31,111,235,0.11);"></div>
+                <div class="ring" style="width:112px;height:112px;border-color:rgba(31,111,235,0.19);"></div>
+                <div class="char" style="width:82px;height:82px;background:transparent;border:2px dashed rgba(31,111,235,0.34);">
+                  <div class="c-eyes">
+                    <div class="c-eye" style="background:rgba(31,111,235,0.40);border-radius:1px;height:3px;width:7px;"></div>
+                    <div class="c-eye" style="background:rgba(31,111,235,0.40);border-radius:1px;height:3px;width:7px;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-h">나 좀 지쳤어.<br>잠깐 쉬게 해줄래</div>
+              <div class="m-cta">쉼표 누르기</div>
+              <div class="m-ghost">지금은 어려워</div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">임계점</div>
+        </div>
+
+        <!-- 04 쉼 모드 (dark, 카운트다운 없음) -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame dark">
+            <div class="m-status dark"></div>
+            <div class="m-body">
+              <div class="char-wrap" style="width:122px;height:122px;">
+                <div class="ring" style="width:122px;height:122px;border-color:rgba(255,255,255,0.08);"></div>
+                <div class="char" style="width:88px;height:88px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.26);">
+                  <div class="c-eyes">
+                    <div class="c-eye" style="background:rgba(255,255,255,0.52);"></div>
+                    <div class="c-eye" style="background:rgba(255,255,255,0.52);"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-s w">쉬는 중</div>
+              <div class="m-h w">한결 나아졌어</div>
+              <div class="m-ghost w">돌아가기</div>
+            </div>
+            <div class="m-tabbar dark">
+              <div class="m-tab active-dk"></div>
+              <div class="m-tab dk"></div>
+              <div class="m-tab dk"></div>
+            </div>
+          </div>
+          <div class="mockup-label">쉼 모드</div>
+        </div>
+
+        <!-- 05 밤 정리 -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div class="m-stamps">
+                <div class="m-stamp"></div>
+                <div class="m-stamp"></div>
+                <div class="m-stamp"></div>
+              </div>
+              <div class="m-h">오늘 세 번<br>쉬게 해줬어</div>
+              <div class="m-s">오늘 지켜낸 청력 42분</div>
+              <div class="char-wrap" style="margin-top:4px;">
+                <div class="char" style="width:60px;height:60px;background:var(--blue-faint);border:2.5px solid rgba(31,111,235,0.38);">
+                  <div class="c-eyes">
+                    <div class="c-eye" style="background:var(--blue);width:5px;height:5px;"></div>
+                    <div class="c-eye" style="background:var(--blue);width:5px;height:5px;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="m-ghost" style="margin-top:2px;">돌아가기</div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">밤 정리</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

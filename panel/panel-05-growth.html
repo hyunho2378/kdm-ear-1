@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>이어쉼표 패널 05 성장과 기록</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root{
+    --white:#FFFFFF;--black:#000000;--blue:#1F6FEB;
+    --t1:rgba(0,0,0,1);--t2:rgba(0,0,0,0.62);--t3:rgba(0,0,0,0.40);
+    --line:rgba(0,0,0,0.12);--faint:rgba(0,0,0,0.04);
+    --blue-faint:rgba(31,111,235,0.10);--blue-mid:rgba(31,111,235,0.45);
+    --margin:64px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#d9d9d9;font-family:'Pretendard',sans-serif;display:flex;justify-content:center;align-items:flex-start;padding:40px;}
+  .panel{width:1684px;height:1190px;background:var(--white);color:var(--t1);padding:var(--margin);position:relative;display:flex;flex-direction:column;}
+  .ph-head{display:flex;justify-content:space-between;align-items:baseline;height:34px;}
+  .ph-mark{font-size:20px;font-weight:800;letter-spacing:-0.01em;}
+  .ph-idx{font-size:13px;font-weight:600;letter-spacing:0.14em;color:var(--t3);}
+  .ph-rule{height:2px;background:var(--black);margin:14px 0 26px;}
+  .eb{font-size:13px;font-weight:700;letter-spacing:0.16em;color:var(--blue);text-transform:uppercase;}
+  .hl{font-size:24px;font-weight:800;letter-spacing:-0.01em;margin-top:8px;line-height:1.25;}
+
+  .panel-body{flex:1;display:flex;flex-direction:column;gap:18px;}
+
+  /* mockup */
+  .sec-mockups{flex:1;display:flex;flex-direction:column;}
+  .mockup-row{flex:1;display:flex;gap:20px;}
+  .mockup-wrap{flex:1;display:flex;flex-direction:column;gap:10px;}
+  .mockup-frame{flex:1;border-radius:24px;border:1.5px solid var(--line);overflow:hidden;display:flex;flex-direction:column;background:var(--white);}
+  .m-status{height:18px;background:var(--faint);flex-shrink:0;}
+  .m-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 16px;gap:10px;}
+  .m-tabbar{height:38px;border-top:1.5px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:space-around;padding:0 20px;}
+  .m-tab{width:20px;height:3.5px;border-radius:2px;background:var(--faint);}
+  .m-tab.active{background:var(--blue);}
+  .m-tab.active2{background:rgba(31,111,235,0.55);}
+  .mockup-label{font-size:10.5px;font-weight:600;letter-spacing:0.04em;color:var(--t3);text-align:center;}
+
+  /* screen 1: week calendar */
+  .week-cal{display:flex;width:100%;gap:0;}
+  .day-cell{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .day-lbl{font-size:8px;font-weight:600;color:var(--t3);}
+  .day-circle{width:28px;height:28px;border-radius:50%;background:var(--faint);border:1.5px solid var(--line);}
+  .day-circle.stamp{background:var(--blue);border-color:var(--blue);}
+  .day-circle.today-ring{border-color:var(--blue);border-width:2.5px;}
+  .day-circle.stamp.today-ring{background:var(--blue);border-color:var(--blue);border-width:2.5px;}
+  .cal-stat{font-size:10px;font-weight:700;color:var(--t1);text-align:center;margin-top:6px;}
+  .cal-stat span{color:var(--blue);}
+
+  /* screen 2: stat big */
+  .stat-big{font-size:80px;font-weight:800;letter-spacing:-0.04em;line-height:1;color:var(--blue);}
+  .stat-label{font-size:13px;font-weight:600;color:var(--t2);text-align:center;margin-top:2px;}
+  .stat-sub-row{display:flex;gap:16px;margin-top:10px;}
+  .stat-sub{display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .stat-sub-val{font-size:22px;font-weight:800;color:var(--t1);letter-spacing:-0.02em;}
+  .stat-sub-lbl{font-size:9px;color:var(--t2);}
+
+  /* screen 3: growth chars */
+  .growth-row{display:flex;gap:14px;align-items:flex-end;justify-content:center;}
+  .g-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;}
+  .g-char{border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .g-eye{border-radius:50%;background:var(--blue);}
+  .g-lbl{font-size:8.5px;font-weight:600;color:var(--t3);}
+  .g-stage-lbl{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:0.06em;text-align:center;margin-top:4px;}
+
+  /* screen 4: return */
+  .char-circle{border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .m-h{font-size:11.5px;font-weight:800;text-align:center;line-height:1.45;color:var(--t1);}
+  .m-s{font-size:9.5px;text-align:center;color:var(--t2);line-height:1.4;}
+
+  /* brand strip */
+  .brand-strip{
+    height:64px;
+    border:1.5px solid var(--line);
+    background:var(--faint);
+    border-radius:10px;
+    display:flex;align-items:center;
+    padding:0 24px;gap:24px;
+    flex-shrink:0;
+  }
+  .brand-wm{font-size:15px;font-weight:800;letter-spacing:-0.02em;white-space:nowrap;}
+  .brand-wm-comma{color:var(--blue);}
+  .brand-sep{width:1px;height:36px;background:var(--line);flex-shrink:0;}
+  .brand-section-lbl{font-size:9px;font-weight:700;letter-spacing:0.12em;color:var(--t3);text-transform:uppercase;margin-right:4px;white-space:nowrap;}
+  .brand-chars-row{display:flex;gap:14px;align-items:center;}
+  .b-char-item{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .b-char{width:26px;height:26px;border-radius:50%;}
+  .b-lbl{font-size:8.5px;font-weight:600;color:var(--t3);}
+  .brand-colors-row{display:flex;gap:14px;align-items:center;}
+  .b-color-item{display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .b-swatch{width:26px;height:26px;border-radius:6px;}
+  .b-hex{font-size:8px;font-weight:600;color:var(--t3);}
+</style>
+</head>
+<body>
+<div class="panel">
+  <div class="ph-head">
+    <span class="ph-mark">이어쉼표</span>
+    <span class="ph-idx">05 GROWTH</span>
+  </div>
+  <div class="ph-rule"></div>
+
+  <div class="panel-body">
+
+    <!-- header -->
+    <div>
+      <div class="eb">Growth and Record</div>
+      <div class="hl">쉴수록 자라는, 지켜낸 만큼 쌓이는</div>
+    </div>
+
+    <!-- 4 MOCKUPS -->
+    <div class="sec-mockups">
+      <div class="mockup-row">
+
+        <!-- 01 기록 탭 — 주간 달력 -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div style="font-size:10px;font-weight:700;color:var(--t3);letter-spacing:0.10em;text-transform:uppercase;align-self:flex-start;">이번 주</div>
+              <div class="week-cal">
+                <div class="day-cell">
+                  <div class="day-lbl">월</div>
+                  <div class="day-circle stamp"></div>
+                </div>
+                <div class="day-cell">
+                  <div class="day-lbl">화</div>
+                  <div class="day-circle"></div>
+                </div>
+                <div class="day-cell">
+                  <div class="day-lbl">수</div>
+                  <div class="day-circle stamp"></div>
+                </div>
+                <div class="day-cell">
+                  <div class="day-lbl">목</div>
+                  <div class="day-circle stamp today-ring"></div>
+                </div>
+                <div class="day-cell">
+                  <div class="day-lbl">금</div>
+                  <div class="day-circle"></div>
+                </div>
+                <div class="day-cell">
+                  <div class="day-lbl">토</div>
+                  <div class="day-circle"></div>
+                </div>
+                <div class="day-cell">
+                  <div class="day-lbl">일</div>
+                  <div class="day-circle"></div>
+                </div>
+              </div>
+              <div class="cal-stat">이번 주 <span>3일</span> 쉬었어요</div>
+              <div style="height:1px;width:100%;background:var(--line);margin:4px 0;"></div>
+              <div style="display:flex;gap:8px;width:100%;justify-content:space-between;padding:0 2px;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                  <div style="font-size:18px;font-weight:800;color:var(--blue);letter-spacing:-0.02em;">12</div>
+                  <div style="font-size:8px;color:var(--t2);">지켜낸 청력 일째</div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                  <div style="font-size:18px;font-weight:800;color:var(--t1);letter-spacing:-0.02em;">4.2</div>
+                  <div style="font-size:8px;color:var(--t2);">누적 보호 시간</div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                  <div style="font-size:18px;font-weight:800;color:var(--t1);letter-spacing:-0.02em;">2</div>
+                  <div style="font-size:8px;color:var(--t2);">오늘 쉰 횟수</div>
+                </div>
+              </div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab"></div>
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">기록 탭 · 주간 달력</div>
+        </div>
+
+        <!-- 02 누적 통계 -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div style="font-size:10px;font-weight:700;color:var(--blue);letter-spacing:0.12em;text-transform:uppercase;">지켜낸 청력</div>
+              <div class="stat-big">12</div>
+              <div class="stat-label">일째 보호 중</div>
+              <div style="height:1px;width:80%;background:var(--line);margin:4px 0;"></div>
+              <div class="stat-sub-row">
+                <div class="stat-sub">
+                  <div class="stat-sub-val">4.2h</div>
+                  <div class="stat-sub-lbl">누적 보호</div>
+                </div>
+                <div class="stat-sub">
+                  <div class="stat-sub-val">18</div>
+                  <div class="stat-sub-lbl">총 쉰 횟수</div>
+                </div>
+                <div class="stat-sub">
+                  <div class="stat-sub-val">3</div>
+                  <div class="stat-sub-lbl">연속 쉰 날</div>
+                </div>
+              </div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab"></div>
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">누적 통계</div>
+        </div>
+
+        <!-- 03 캐릭터 성장 (GrowthView) -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div style="font-size:10px;font-weight:700;color:var(--t3);letter-spacing:0.10em;text-transform:uppercase;">성장 중</div>
+              <div class="growth-row">
+                <!-- stage 1 (작음) -->
+                <div class="g-wrap">
+                  <div class="g-char" style="width:40px;height:40px;background:rgba(31,111,235,0.06);border:1.5px solid rgba(31,111,235,0.20);">
+                    <div style="display:flex;gap:6px;">
+                      <div class="g-eye" style="width:4px;height:4px;opacity:0.5;"></div>
+                      <div class="g-eye" style="width:4px;height:4px;opacity:0.5;"></div>
+                    </div>
+                  </div>
+                  <div class="g-lbl">1단계</div>
+                </div>
+                <!-- stage 2 (중간, 현재) -->
+                <div class="g-wrap">
+                  <div style="position:relative;display:flex;align-items:center;justify-content:center;">
+                    <div style="position:absolute;width:72px;height:72px;border-radius:50%;border:1.5px dashed rgba(31,111,235,0.20);"></div>
+                    <div class="g-char" style="width:56px;height:56px;background:var(--blue-faint);border:2px solid rgba(31,111,235,0.35);position:relative;z-index:1;">
+                      <div style="display:flex;gap:8px;">
+                        <div class="g-eye" style="width:5px;height:5px;"></div>
+                        <div class="g-eye" style="width:5px;height:5px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="g-lbl" style="color:var(--blue);font-weight:700;margin-top:8px;">2단계 · 현재</div>
+                </div>
+                <!-- stage 3 (큰, 목표) -->
+                <div class="g-wrap">
+                  <div class="g-char" style="width:72px;height:72px;background:rgba(31,111,235,0.16);border:2.5px solid rgba(31,111,235,0.50);">
+                    <div style="display:flex;gap:10px;">
+                      <div class="g-eye" style="width:6px;height:6px;"></div>
+                      <div class="g-eye" style="width:6px;height:6px;"></div>
+                    </div>
+                  </div>
+                  <div class="g-lbl">3단계</div>
+                </div>
+              </div>
+              <div class="g-stage-lbl">더 쉬면 성장해요</div>
+              <div class="m-s" style="margin-top:2px;">잘 쉰 날이 쌓이면<br>캐릭터가 자랍니다</div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab"></div>
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">캐릭터 성장</div>
+        </div>
+
+        <!-- 04 복귀 화면 -->
+        <div class="mockup-wrap">
+          <div class="mockup-frame">
+            <div class="m-status"></div>
+            <div class="m-body">
+              <div class="char-circle" style="width:80px;height:80px;background:rgba(31,111,235,0.07);border:2px solid rgba(31,111,235,0.22);">
+                <div style="display:flex;gap:10px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:rgba(31,111,235,0.45);"></div>
+                  <div style="width:6px;height:6px;border-radius:50%;background:rgba(31,111,235,0.45);"></div>
+                </div>
+              </div>
+              <div class="m-h">며칠 못 쉬어도<br>괜찮아요</div>
+              <div class="m-s">오늘부터 다시 시작해요.<br>함께 귀를 지켜봐요.</div>
+            </div>
+            <div class="m-tabbar">
+              <div class="m-tab active"></div>
+              <div class="m-tab"></div>
+              <div class="m-tab"></div>
+            </div>
+          </div>
+          <div class="mockup-label">복귀 화면</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BRAND STRIP -->
+    <div class="brand-strip">
+      <div class="brand-wm">이어쉼표<span class="brand-wm-comma">,</span></div>
+      <div class="brand-sep"></div>
+      <div class="brand-section-lbl">Character</div>
+      <div class="brand-chars-row">
+        <!-- 쌩쌩 -->
+        <div class="b-char-item">
+          <div class="b-char" style="background:var(--blue-faint);border:2px solid rgba(31,111,235,0.35);display:flex;align-items:center;justify-content:center;">
+            <div style="display:flex;gap:5px;">
+              <div style="width:4px;height:4px;border-radius:50%;background:var(--blue);"></div>
+              <div style="width:4px;height:4px;border-radius:50%;background:var(--blue);"></div>
+            </div>
+          </div>
+          <div class="b-lbl">쌩쌩</div>
+        </div>
+        <!-- 지침 -->
+        <div class="b-char-item">
+          <div class="b-char" style="background:transparent;border:2px solid rgba(31,111,235,0.18);display:flex;align-items:center;justify-content:center;">
+            <div style="display:flex;gap:5px;">
+              <div style="width:5px;height:3px;border-radius:1px;background:rgba(31,111,235,0.35);"></div>
+              <div style="width:5px;height:3px;border-radius:1px;background:rgba(31,111,235,0.35);"></div>
+            </div>
+          </div>
+          <div class="b-lbl">지침</div>
+        </div>
+        <!-- 먹먹 -->
+        <div class="b-char-item">
+          <div style="position:relative;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+            <div style="position:absolute;width:32px;height:32px;border-radius:50%;border:1.5px dashed rgba(31,111,235,0.14);top:0;left:0;"></div>
+            <div class="b-char" style="width:22px;height:22px;background:transparent;border:1.5px dashed rgba(31,111,235,0.32);display:flex;align-items:center;justify-content:center;">
+              <div style="display:flex;gap:3px;">
+                <div style="width:3.5px;height:2.5px;border-radius:1px;background:rgba(31,111,235,0.38);"></div>
+                <div style="width:3.5px;height:2.5px;border-radius:1px;background:rgba(31,111,235,0.38);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="b-lbl">먹먹</div>
+        </div>
+      </div>
+      <div class="brand-sep"></div>
+      <div class="brand-section-lbl">Color</div>
+      <div class="brand-colors-row">
+        <div class="b-color-item">
+          <div class="b-swatch" style="background:#FFFFFF;border:1px solid var(--line);"></div>
+          <div class="b-hex">#FFFFFF</div>
+        </div>
+        <div class="b-color-item">
+          <div class="b-swatch" style="background:#000000;"></div>
+          <div class="b-hex">#000000</div>
+        </div>
+        <div class="b-color-item">
+          <div class="b-swatch" style="background:#1F6FEB;"></div>
+          <div class="b-hex">#1F6FEB</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
